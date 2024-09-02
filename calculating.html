@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모바일앱 제작하기_계산기(IOS/ANDROID)</title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    h2 {
+      display: none;
+    }
+
+    legend {
+      display: none;
+    }
+
+    fieldset {
+      width: 100%;
+      height: 100%;
+      background-color: rgb(192, 211, 255);
+      padding-top: 22px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    fieldset p {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    input[type=button] {
+      width: 80px;
+      height: 80px;
+      font-size: 25px;
+      font-weight: bold;
+      background-color: #fff;
+      border-radius: 100%;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      transition: 0.5s
+    }
+
+    input[type=text] {
+      width: 350px;
+      height: 80px;
+      font-size: 25px;
+      font-weight: bold;
+      border-radius: 20px;
+      border: none;
+      text-align: right;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .cal_Button>p:last-child>input[type=button] {
+      width: 350px;
+      border-radius: 20px;
+      margin-bottom: 29%;
+    }
+
+    input.clear_btn {
+      background-color: rgb(123, 132, 255);
+    }
+
+    .btn1:hover,
+    .clear_btn:hover,
+    .c_btn:hover,
+    .res_btn:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    input.res_btn {
+      background-color: rgb(123, 132, 255);
+    }
+
+    input.c_btn {
+      background-color: rgb(89, 208, 255);
+    }
+  </style>
+</head>
+
+<body>
+  <h2>모바일앱 제작하기_계산기(IOS/ANDROID)</h2>
+
+  <form name="" method="post" action="">
+    <fieldset>
+      <legend>사칙연산 계산기</legend>
+      <p>
+        <input type="text" id="cal_Output"> <!-- 숫자 입력과 연산 결과가 출력되는 박스-->
+      </p>
+      <div class="cal_Button">
+        <p>
+          <input type="button" value="1" class="btn1" onclick="cal(1)">
+          <input type="button" value="2" class="btn1" onclick="cal(2)">
+          <input type="button" value="3" class="btn1" onclick="cal(3)">
+          <input type="button" value="&#43;" class="c_btn" onclick="cal('+')">
+        </p>
+        <p>
+          <input type="button" value="4" class="btn1" onclick="cal(4)">
+          <input type="button" value="5" class="btn1" onclick="cal(5)">
+          <input type="button" value="6" class="btn1" onclick="cal(6)">
+          <input type="button" value="&#8722;" class="c_btn" onclick="cal('-')">
+        </p>
+        <p>
+          <input type="button" value="7" class="btn1" onclick="cal(7)">
+          <input type="button" value="8" class="btn1" onclick="cal(8)">
+          <input type="button" value="9" class="btn1" onclick="cal(9)">
+          <input type="button" value="&#215;" class="c_btn" onclick="cal('*')">
+        </p>
+        <p>
+          <input type="button" value="0" class="btn1" onclick="cal(0)">
+          <input type="button" value="&#x003D;" class="res_btn" onclick="result()">
+          <input type="button" value="&#247;" class="c_btn" onclick="cal('/')">
+          <input type="button" value="&#x002E;" class="c_btn" onclick="cal('.')">
+        </p>
+        <p>
+          <input type="button" value="clear" class="clear_btn" onclick="clear_txt()">
+        </p>
+      </div>
+    </fieldset>
+  </form>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    // 출력 결과 박스를 변수로 선언
+    let res = document.getElementById('cal_Output');
+
+    // 버튼을 클릭하면 버튼에 들어간 매개변수값을 받아서 함수에 대입한다.
+    function cal(op) {
+      // 출력결과 박스에 누른 값들을 받아서 표시한다.
+      let op_value = res.value + op; //연산식 
+
+      res.value = op_value; //출력하기
+
+    }
+
+    // clear 버튼 클릭시 res에 입력된 값들을 모두 지우기
+    function clear_txt() {
+      res.value = ""; // 공백으로 만든다 == 지운다.
+    }
+
+    // 입력한 숫자와 연산기호를 입력받아서 계산하고 결과값 출력하기
+    function result() {
+      res.value = eval(res.value);
+    }
+  </script>
+</body>
+
+</html>
